@@ -1,7 +1,7 @@
 class Solution {
     public boolean closeStrings(String word1, String word2) {
         if(word1.length()!=word2.length()){
-            System.out.println("...");
+           
             return false;
         }
         HashMap<Character,Integer> hm1 = new HashMap<Character,Integer>();
@@ -12,7 +12,6 @@ class Solution {
         for(int i = 0; i<word2.length(); i++){
             hm2.put(word2.charAt(i),hm2.getOrDefault(word2.charAt(i),0)+1);
         }
-        System.out.println(hm1.values()+" | "+hm2.values());
 
         List<Integer> values1 = new ArrayList<>(hm1.values());
         List<Integer> values2 = new ArrayList<>(hm2.values());
