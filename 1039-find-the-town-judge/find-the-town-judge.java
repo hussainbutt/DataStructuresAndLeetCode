@@ -3,21 +3,20 @@ class Solution {
         if(n == 1){
             return n;
         }
-        HashMap<Integer,Integer> hm1 = new HashMap<Integer,Integer>();
-        HashMap<Integer,Integer> hm2 = new HashMap<Integer,Integer>();
+        HashMap<Integer,Integer> trustsMap = new HashMap<Integer,Integer>();
+        HashMap<Integer,Integer> trustedByMap = new HashMap<Integer,Integer>();
 
-        for (int j = 0; j < trust.length; j++) {
-            hm1.put(trust[j][0], hm1.getOrDefault(trust[j][0], 0) + 1);
+        for (int i = 0; i < trust.length; i++) {
+            trustsMap.put(trust[i][0], trustsMap.getOrDefault(trust[i][0], 0) + 1);
         }
         for (int i = 0; i < trust.length; i++) {
-            hm2.put(trust[i][1], hm2.getOrDefault(trust[i][1], 0) + 1);
+            trustedByMap.put(trust[i][1], trustedByMap.getOrDefault(trust[i][1], 0) + 1);
         }
 
-        int key = getKeyByValue(hm2,n-1);
-        boolean isZero = hm1.containsKey(key);
-        System.out.println(key);
-        System.out.println(isZero);
-        if (key != -1 && !isZero){
+        int key = getKeyByValue(trustedByMap,n-1);
+        boolean isTrustSomeoneElse = trustsMap.containsKey(key);
+
+        if (key != -1 && !isTrustSomeoneElse){
             return key;
         }
         return -1;
