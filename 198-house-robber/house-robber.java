@@ -1,13 +1,15 @@
 class Solution {
     public int rob(int[] nums) {
         if(nums.length == 1) return nums[0];
-        int[] maxLoot = new int[nums.length];
-        maxLoot[0] = nums[0];
-        maxLoot[1] = Math.max(nums[1],maxLoot[0]);
+        int a = nums[0];
+        int b = Math.max(nums[1],a);
+        int c = b;
 
         for(int i = 2; i<nums.length; i++){
-            maxLoot[i] = Math.max(maxLoot[i-1],maxLoot[i-2]+nums[i]);
+            c = Math.max(b,a+nums[i]);
+            a=b;
+            b=c;
         }
-        return maxLoot[maxLoot.length-1];
+        return c;
     }
 }
