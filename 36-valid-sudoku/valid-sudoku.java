@@ -1,14 +1,19 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
         HashMap<String, HashSet> hm = new HashMap();
-        HashSet<Character> hs = new HashSet<Character>();
+        HashSet<Character> hs1 = new HashSet<Character>();
+        HashSet<Character> hs2 = new HashSet<Character>();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (board[i][j] != '.' && hs.contains(board[i][j])) {
-                    
+                System.out.print(board[i][j]+",");
+                if (board[i][j] != '.' && hs1.contains(board[i][j])) {
+                    System.out.print("this went wrong");
                     return false;
                 }
-                hs.add(board[i][j]);
+                hs1.add(board[i][j]);
+                if (board[j][i] != '.' && hs2.contains(board[j][i])) 
+                    return false;
+                hs2.add(board[j][i]);
                 String key = i / 3 + "," + j / 3;
                 hm.putIfAbsent(key, new HashSet());
                 if (hm.get(key).contains(board[i][j]))
@@ -17,22 +22,9 @@ class Solution {
                     hm.get(key).add(board[i][j]);
                 }
             }
-        hs.clear();
+            hs1.clear();
+            hs2.clear();
         }
-
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (board[j][i] != '.' && hs.contains(board[j][i])) {
-
-                    return false;
-                }
-                hs.add(board[j][i]);
-                String key = (i / 3 + "," + j / 3);
-                
-            }
-            hs.clear();
-        }
-        hs.clear();
         return true;
     }
 }
