@@ -1,7 +1,5 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
-        int[] horizontal = new int[9];
-        int[] vertical = new int[9];
         HashMap<String, HashSet> hm = new HashMap();
         HashSet<Character> hs = new HashSet<Character>();
         for (int i = 0; i < 9; i++) {
