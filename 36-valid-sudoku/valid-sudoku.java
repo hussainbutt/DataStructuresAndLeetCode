@@ -17,7 +17,6 @@ class Solution {
                     return false;
                 if (board[i][j] != '.') {
                     hm.get(key).add(board[i][j]);
-                    System.out.println("added an element");
                 }
             }
         hs.clear();
@@ -26,7 +25,7 @@ class Solution {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (board[j][i] != '.' && hs.contains(board[j][i])) {
-                    System.out.println(board[j][i]);
+
                     return false;
                 }
                 hs.add(board[j][i]);
