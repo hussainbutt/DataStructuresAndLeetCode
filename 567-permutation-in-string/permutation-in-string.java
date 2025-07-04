@@ -10,11 +10,8 @@ class Solution {
         for(int i = 0; i<s1.length(); i++){
             arr1[s1.charAt(i)-97]++;
         }
-
         int left = 0;
         int right = s1.length()-1;
-
-
         for(int i = 0; i<s1.length();i++){
             arr2[s2.charAt(i)-97]++;
         }
