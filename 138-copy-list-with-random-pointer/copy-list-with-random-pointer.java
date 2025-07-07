@@ -18,7 +18,6 @@ class Solution {
         if(head == null){
             return head;
         }
-        //make copies in front of them
         Node current = head;
         while(current!=null){
             Node newNode = new Node(current.val);
@@ -26,7 +25,6 @@ class Solution {
             current.next = newNode;
             current = current.next.next;   
         }
-        //Point randoms
         current = head;
         while(current!=null){
             if(current.random != null){
@@ -34,8 +32,6 @@ class Solution {
             }
             current = current.next.next;
         }
-        //remove unneccessary elements
-        
         current = head;
         Node copyCurrent = head.next;
         Node copyHead = head.next;
