@@ -18,7 +18,6 @@ class Solution {
         ListNode prev = dummy;
 
         while(true){
-            //count
             ListNode check = current;
             for(int i = 0;i<k;i++){
                 if(check == null) return dummy.next;
