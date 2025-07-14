@@ -6,7 +6,7 @@ class Solution {
         if(n == -1) return 1/x;
         
         
-        double val = myPow(x,n/2);
+        double val = myPow(x,n/2); //half
         if(n%2 == 0){
             return val * val;
         }
