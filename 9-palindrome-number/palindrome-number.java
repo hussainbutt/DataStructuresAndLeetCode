@@ -1,9 +1,7 @@
 class Solution {
     public boolean isPalindrome(int n) {
         if(n < 0) return false;
-        if (n != recursive(n,0))
-            return false;
-        else return true;
+        return n == recursive(n,0);
         
     }
     public int recursive(int n,int rev){
