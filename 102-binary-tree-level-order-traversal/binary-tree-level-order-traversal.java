@@ -1,5 +1,3 @@
-import java.util.*;
-
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -17,47 +15,26 @@ import java.util.*;
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        }
+        //simply do a bfs //make an array //put the child when you pop //also print when you pop
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        if(root == null) return ans;
 
-        Deque<TreeNode> q = new ArrayDeque<>();
-        q.offer(root);
 
-        while (!q.isEmpty()) {
-            int levelSize = q.size();
-            List<Integer> currentLevel = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(root);
 
-            for (int i = 0; i < levelSize; i++) {
-                TreeNode current = q.poll();
-                currentLevel.add(current.val);
-
-                if (current.left != null) {
-                    q.offer(current.left);
-                }
-                if (current.right != null) {
-                    q.offer(current.right);
-                }
+        while(!q.isEmpty()){
+            int size = q.size();
+            List<Integer> level = new ArrayList<Integer>();
+            for(int i = 0; i<size; i++){
+                TreeNode node = q.poll();
+                level.add(node.val);
+                if(node.left != null) q.add(node.left);
+                if(node.right != null) q.add(node.right);
             }
-            
-            result.add(currentLevel);
+            ans.add(level);
+
         }
-
-        return result;
-    }
-
-    public static void main(String[] args) {
-        // Example usage
-        Solution sol = new Solution();
-
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20, new TreeNode(15), new TreeNode(7));
-
-        List<List<Integer>> result = sol.levelOrder(root);
-        for (List<Integer> level : result) {
-            System.out.println(level);
-        }
+        return ans;
     }
 }
