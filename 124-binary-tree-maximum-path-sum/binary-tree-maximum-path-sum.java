@@ -6,15 +6,12 @@ class Solution {
     }
 
     public int helper(TreeNode root, int[] max) {
-        if (root == null) return 0;
+       if(root == null) return 0;
+       int left = Math.max(0,helper(root.left,max)); //left subtree
+       int right = Math.max(0,helper(root.right,max)); // right subtree
 
-        int left = Math.max(helper(root.left, max), 0);   // discard negative paths
-        int right = Math.max(helper(root.right, max), 0); // discard negative paths
-
-        int throughRoot = root.val + left + right;
-
-        max[0] = Math.max(max[0], throughRoot); // update the global maximum
-
-        return root.val + Math.max(left, right); // return the max gain if continuing upward
-    }
+       int splitPathSum = left+right+root.val;
+       if(splitPathSum > max[0]) max[0] = splitPathSum;
+       return root.val+Math.max(left, right);
+}
 }
