@@ -1,14 +1,15 @@
 class Solution {
     public int findMin(int[] nums) {
-        int rotations = 0;
-        int returnIndex = 0;
-        for(int i=1; i<nums.length;i++){
-            if(nums[i-1]>nums[i]){
-                rotations = nums.length - i + 1;
-                returnIndex = i;
-                break;
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > nums[right]) {
+                left = mid + 1;
+            } else {
+                right = mid;
             }
         }
-        return nums[returnIndex];
+        return nums[left];
     }
 }
