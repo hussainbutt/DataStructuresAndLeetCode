@@ -3,17 +3,10 @@ class Solution {
         int[] ans = new int[temperatures.length];
         Stack<Integer> st = new Stack<Integer>();
         for(int i = temperatures.length-1; i>=0; i--){
-            System.out.println("in loop:" + i);
             while(!st.isEmpty() && temperatures[st.peek()]<=temperatures[i]){
                 st.pop();
             }
-            if(!st.isEmpty() && temperatures[st.peek()]>temperatures[i]){
-                ans[i] = st.peek()-i;
-            }
-            if(st.isEmpty()){
-                ans[i] = 0;
-            }
-
+            ans[i] = st.isEmpty()?0:st.peek()-i;
             st.push(i);
         }
         return ans;
